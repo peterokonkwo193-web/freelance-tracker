@@ -135,6 +135,7 @@ async function loadJobs() {
   } catch (err) {
     showConnectionErrorBanner();
     showToast('Could not load jobs from database', false);
+    renderUI();
   }
 }
 
