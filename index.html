@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upwork Subcontracting Tracker | Freelance Ops Dashboard</title>
+    <meta name="description" content="Secure browser-based operations dashboard to track subcontracted jobs, worker assignments, statuses, payments, and notes." />
+  </head>
+  <body>
+    <main id="app" aria-label="Freelance Project Tracker Dashboard">
+      
+      <!-- Supabase Connection Banner (hidden by default) -->
+      <section id="connection-banner-container" aria-live="polite"></section>
+
+      <!-- App Header -->
+      <header>
+        <div>
+          <h1><span class="accent">Antigravity</span> Freelance Tracker</h1>
+          <p class="subtitle">Ops dashboard for tracking Upwork subcontracting work</p>
+        </div>
+        <button id="btn-add-job-top" class="btn btn-primary btn-add-job-desktop" aria-haspopup="dialog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Add Job
+        </button>
+      </header>
+
+      <!-- Stats Section -->
+      <section id="stats-container" class="stats-grid" aria-label="Summary Statistics"></section>
+
+      <!-- Control Bar Section -->
+      <section class="control-bar" aria-label="Filters and Exports">
+        <!-- Filter Bar -->
+        <nav id="filter-container" class="filter-container" aria-label="Status filters"></nav>
+
+        <!-- Actions (Export, Copy) -->
+        <div class="action-group">
+          <button id="btn-export-excel" class="btn btn-secondary" title="Export current jobs to Excel file">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Excel
+          </button>
+          
+          <button id="btn-copy-whatsapp" class="btn btn-secondary" title="Copy current jobs as WhatsApp text block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy WhatsApp
+          </button>
+        </div>
+      </section>
+
+      <!-- Jobs List Area -->
+      <section aria-label="Subcontracted Jobs List">
+        <!-- Spreadsheet view for larger viewports -->
+        <div id="desktop-table-container" class="table-container"></div>
+        
+        <!-- Touch-friendly card view for mobile viewports -->
+        <div id="mobile-cards-container" class="mobile-card-list"></div>
+      </section>
+
+      <!-- Mobile FAB -->
+      <button id="btn-add-job-fab" class="fab-btn" title="Add New Job" aria-haspopup="dialog">➕</button>
+
+      <!-- Modal slide-in overlay form -->
+      <div id="job-form-overlay" class="modal-overlay" aria-hidden="true"></div>
+
+      <!-- Toast Feedback -->
+      <div id="toast-notification" class="toast" role="alert" aria-live="assertive">
+        <span class="toast-success-dot"></span>
+        <span id="toast-message">Job added successfully</span>
+      </div>
+
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
